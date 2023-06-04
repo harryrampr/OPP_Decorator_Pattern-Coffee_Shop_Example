@@ -1,17 +1,15 @@
 @tailwind base;
 @layer base {
     h1 {
-        @apply text-2xl;
+        @apply text-[1.75rem];
         @apply font-medium;
-        @apply mt-4;
-        @apply mb-2;
+        @apply mt-[2rem];
+        @apply mb-[2rem];
     }
 
     h2 {
         @apply text-xl;
         @apply font-medium;
-        @apply mt-2;
-        @apply mb-1;
     }
 
     h3 {
@@ -22,16 +20,28 @@
     }
 
     li {
-        @apply text-base;
-        @apply mt-1;
-        @apply ml-2;
+        @apply text-lg;
     }
 
     p {
         @apply text-base;
-        @apply mt-1;
-        @apply ml-2;
     }
+
+    .beverage {
+        @apply bg-slate-200;
+        @apply w-[14.75rem];
+        @apply mb-[3rem];
+        @apply p-6;
+        @apply pr-0;
+    }
+
+    .total {
+        @apply text-lg;
+        @apply mt-3;
+        @apply font-medium;
+    }
+
 }
+
 @tailwind components;
 @tailwind utilities;
