@@ -5,6 +5,19 @@ require_once __DIR__ . '/../../vendor/autoload.php';
 
 use App\ConcreteComponent;
 use App\ConcreteDecorator;
+use App\Beverage;
+
+/**
+ * Display the details of a beverage.
+ *
+ * @param Beverage $beverage The beverage object to display.
+ */
+function displayBeverage(Beverage $beverage): void
+{
+    echo '<div class="beverage">', PHP_EOL;
+    echo $beverage->getDescription();
+    echo sprintf("</ul>\n<p class=\"total\">Total cost: $%.2F</p>\n</div>%s", $beverage->cost(), PHP_EOL);
+}
 
 // Coffees
 $houseBlend = new ConcreteComponent('House Blend Coffee', 0.89);
@@ -20,27 +33,23 @@ $whip = new ConcreteDecorator('Whip Cream Added', .10);
 
 echo '<h1>Coffee Shop Simulation</h1>', PHP_EOL;
 
+// Prepare House Blend Coffee with double Mocha and Whip Cream
 $beverage = $houseBlend->addDecoration($soy)
     ->addDecoration($mocha)
     ->addDecoration($mocha)
     ->addDecoration($whip);
-echo '<div class="beverage">', PHP_EOL;
-echo $beverage->getDescription();
-echo sprintf("</ul>\n<p class=\"total\">Total cost: $%.2F</p>\n</div>%s", $beverage->cost(), PHP_EOL);
+displayBeverage($beverage);
 
+// Prepare Decaf Coffee with Steamed Milk
 $beverage = $decaf->addDecoration($steamedMilk);
-echo '<div class="beverage">', PHP_EOL;
-echo $beverage->getDescription();
-echo sprintf("</ul>\n<p class=\"total\">Total cost: $%.2F</p>\n</div>%s", $beverage->cost(), PHP_EOL);
+displayBeverage($beverage);
 
+// Prepare Dark Roasted Coffee with Mocha and Whip Cream
 $beverage = $darkRoasted->addDecoration($steamedMilk)
     ->addDecoration($mocha)
     ->addDecoration($whip);
-echo '<div class="beverage">', PHP_EOL;
-echo $beverage->getDescription();
-echo sprintf("</ul>\n<p class=\"total\">Total cost: $%.2F</p>\n</div>%s", $beverage->cost(), PHP_EOL);
+displayBeverage($beverage);
 
+// Prepare Espresso Coffee
 $beverage = $espresso;
-echo '<div class="beverage">', PHP_EOL;
-echo $beverage->getDescription();
-echo sprintf("</ul>\n<p class=\"total\">Total cost: $%.2F</p>\n</div>%s", $beverage->cost(), PHP_EOL);
+displayBeverage($beverage);
